@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sdrawkcab/utils/app_routes.dart';
+import 'package:sdrawkcab/components/form_component.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +12,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          IconButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(AppRoutes.RESULT_SCREEN),
-            icon: Icon(Icons.navigate_next),
-          )
+          FormComponent(),
         ],
       ),
     );
