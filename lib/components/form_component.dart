@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sdrawkcab/components/result_component.dart';
 
 class FormComponent extends StatefulWidget {
   const FormComponent({super.key});
@@ -11,6 +12,15 @@ final _formKey = GlobalKey<FormState>();
 
 class _FormComponentState extends State<FormComponent> {
   final formController = TextEditingController();
+
+  _openResultModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return ResultComponent(formController.text);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +45,9 @@ class _FormComponentState extends State<FormComponent> {
               ),
               ElevatedButton(
                 onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _openResultModal(context);
+                  }
                 },
                 child: Text(
                   'Enviar',
