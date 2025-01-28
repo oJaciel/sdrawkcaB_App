@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sdrawkcab/utils/app_routes.dart';
 
 class FormComponent extends StatefulWidget {
   const FormComponent({super.key});
@@ -36,9 +35,6 @@ class _FormComponentState extends State<FormComponent> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.of(context).pushNamed(AppRoutes.RESULT_SCREEN, arguments: formController.text);
-                  }
                 },
                 child: Text(
                   'Enviar',

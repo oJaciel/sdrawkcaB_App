@@ -26,14 +26,17 @@ class ResultComponent extends StatelessWidget {
       return reversedString;
     }
 
-    return Column(
-      children: [
-        Text(reverseText()),
-        FloatingActionButton(
-          onPressed: () => provider.speak(reverseText()),
-          child: Text('Falar'),
-        ),
-      ],
+    return Container(
+      width: double.infinity,
+      child: Column(
+        children: [
+          Text(reverseText()),
+          FloatingActionButton(
+            onPressed: () => provider.speak(reverseText()),
+            child: Text('Falar'),
+          ),
+        ],
+      ),
     );
   }
 }
