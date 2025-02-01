@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:sdrawkcab/providers/tts_provider.dart';
 
 class ResultComponent extends StatelessWidget {
@@ -14,21 +15,49 @@ class ResultComponent extends StatelessWidget {
 
     //Função para reverter o texto recebido
     String reverseText() {
-      //Senão, reverte o texto
-      List<String> characters = text.split('');
-      // Reverse the order and join the characters
+      //Primeiro, transforma o texto em uma lista
+      List<String> characters = text.toLowerCase().split('');
+      // Depois, inverte os itens da lista, e junta tudo em uma string
       String reversedString = characters.reversed.join('');
       return reversedString;
     }
 
     return Container(
       width: double.infinity,
+      padding: EdgeInsets.all(20),
+      margin: EdgeInsets.symmetric(
+        vertical: MediaQuery.sizeOf(context).height * 0.1,
+      ),
       child: Column(
         children: [
-          Text(reverseText()),
-          FloatingActionButton(
+          Text(
+            '$text ao contrário é:',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.025,
+          ),
+          Text(
+            reverseText(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.05,
+          ),
+          PrettyWaveButton(
+            backgroundColor: Colors.blueAccent,
             onPressed: () => provider.speak(reverseText()),
-            child: Text('Falar'),
+            child: Icon(
+              Icons.play_arrow_rounded,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
