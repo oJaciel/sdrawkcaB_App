@@ -52,7 +52,7 @@ class ResultComponent extends StatelessWidget {
             height: MediaQuery.sizeOf(context).height * 0.05,
           ),
           PrettyWaveButton(
-            backgroundColor: Colors.blueAccent,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             onPressed: () => provider.speak(reverseText()),
             child: Icon(
               Icons.play_arrow_rounded,
