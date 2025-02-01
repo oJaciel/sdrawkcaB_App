@@ -51,6 +51,16 @@ class ResultComponent extends StatelessWidget {
           SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.05,
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Text(
+              'Toque para ouvir ao contrário',
+              style: TextStyle(
+                fontSize: 12
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
           PrettyWaveButton(
             backgroundColor: Theme.of(context).colorScheme.primary,
             onPressed: () => provider.speak(reverseText()),
