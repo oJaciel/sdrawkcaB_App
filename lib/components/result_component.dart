@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:provider/provider.dart';
-import 'package:sdrawkcab/providers/history_provider.dart';
+import 'package:sdrawkcab/providers/phrase_provider.dart';
 import 'package:sdrawkcab/providers/tts_provider.dart';
 
 class ResultComponent extends StatelessWidget {
@@ -12,7 +12,7 @@ class ResultComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Pegar o provider do histórico
-    final provider = Provider.of<HistoryProvider>(context, listen: false);
+    final provider = Provider.of<PhraseProvider>(context, listen: false);
 
     // Buscar a frase pelo ID
     final phrase = provider.getHistory().firstWhere(

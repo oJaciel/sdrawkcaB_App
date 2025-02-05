@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sdrawkcab/providers/history_provider.dart';
+import 'package:sdrawkcab/providers/phrase_provider.dart';
 import 'package:sdrawkcab/screens/tabs_screen.dart';
 import 'package:sdrawkcab/theme/app_theme.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => HistoryProvider(),
+          create: (_) => PhraseProvider(),
         )
       ],
       child: MaterialApp(

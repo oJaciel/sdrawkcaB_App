@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:sdrawkcab/models/phrase.dart';
 import 'package:uuid/uuid.dart';
 
-class HistoryProvider with ChangeNotifier {
+class PhraseProvider with ChangeNotifier {
   List<Phrase> history = [];
 
   getHistory() {
@@ -18,9 +18,9 @@ class HistoryProvider with ChangeNotifier {
 
   reversePhrase(String text) {
     //Primeiro, transforma o texto em uma lista
-      List<String> characters = text.toLowerCase().split('');
-      // Depois, inverte os itens da lista, e junta tudo em uma string
-      String reversedString = characters.reversed.join('');
-      return reversedString;
+    List<String> characters = text.toLowerCase().split('');
+    // Depois, inverte os itens da lista, e junta tudo em uma string
+    String reversedString = characters.reversed.join('');
+    return reversedString;
   }
 }
