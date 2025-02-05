@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_tts: ^4.2.1
   pretty_animated_buttons: ^0.0.2
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
