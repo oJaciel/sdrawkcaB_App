@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sdrawkcab/providers/history_provider.dart';
 import 'package:sdrawkcab/screens/tabs_screen.dart';
 import 'package:sdrawkcab/theme/app_theme.dart';
 
@@ -12,10 +14,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.appTheme,
-      home: TabsScreen(),
-      debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => HistoryProvider(),
+        )
+      ],
+      child: MaterialApp(
+        theme: AppTheme.appTheme,
+        home: TabsScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

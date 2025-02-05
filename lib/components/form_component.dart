@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sdrawkcab/components/result_component.dart';
+import 'package:sdrawkcab/providers/history_provider.dart';
 
 class FormComponent extends StatefulWidget {
   const FormComponent({super.key});
@@ -24,6 +26,8 @@ class _FormComponentState extends State<FormComponent> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<HistoryProvider>(context);
+
     return Form(
       key: _formKey,
       child: Center(
@@ -47,6 +51,7 @@ class _FormComponentState extends State<FormComponent> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _openResultModal(context);
+                    provider.addPhraseToHistory(formController.text);
                   }
                 },
                 child: Text(
