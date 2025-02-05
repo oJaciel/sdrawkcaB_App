@@ -10,17 +10,8 @@ class ResultComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 //Instanciando e inicializando o Tts
-    final provider = TtsProvider();
-    provider.initTts();
-
-    //Função para reverter o texto recebido
-    String reverseText() {
-      //Primeiro, transforma o texto em uma lista
-      List<String> characters = text.toLowerCase().split('');
-      // Depois, inverte os itens da lista, e junta tudo em uma string
-      String reversedString = characters.reversed.join('');
-      return reversedString;
-    }
+    final ttsProvider = TtsProvider();
+    ttsProvider.initTts();
 
     return Container(
       width: double.infinity,
@@ -41,7 +32,7 @@ class ResultComponent extends StatelessWidget {
             height: MediaQuery.sizeOf(context).height * 0.025,
           ),
           Text(
-            reverseText(),
+            text,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 32,
@@ -63,7 +54,7 @@ class ResultComponent extends StatelessWidget {
           ),
           PrettyWaveButton(
             backgroundColor: Theme.of(context).colorScheme.primary,
-            onPressed: () => provider.speak(reverseText()),
+            onPressed: () => ttsProvider.speak(text),
             child: Icon(
               Icons.play_arrow_rounded,
               color: Colors.white,

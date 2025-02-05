@@ -7,18 +7,20 @@ class HomeScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final formController = TextEditingController();
 
-  _openResultModal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (_) {
-        return ResultComponent(formController.text);
-      },
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HistoryProvider>(context);
+
+    _openResultModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return ResultComponent(provider.reversePhrase(formController.text));
+      },
+    );
+  }
 
     return Form(
       key: _formKey,
