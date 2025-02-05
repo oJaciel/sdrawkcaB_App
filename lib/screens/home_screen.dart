@@ -13,11 +13,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<HistoryProvider>(context);
 
-    _openResultModal(BuildContext context) {
+    _openResultModal(BuildContext context, String id) {
     showModalBottomSheet(
       context: context,
       builder: (_) {
-        return ResultComponent(provider.reversePhrase(formController.text));
+        return ResultComponent(id);
       },
     );
   }
@@ -44,8 +44,8 @@ class HomeScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    _openResultModal(context);
-                    provider.addPhraseToHistory(formController.text);
+                    final newPhrase = provider.addPhraseToHistory(formController.text);
+                      _openResultModal(context, newPhrase.id);
                   }
                 },
                 child: const Text(

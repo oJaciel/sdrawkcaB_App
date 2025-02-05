@@ -13,6 +13,7 @@ class HistoryProvider with ChangeNotifier {
     final newPhrase = Phrase(Uuid().v1(), phrase, reversePhrase(phrase));
     history.add(newPhrase);
     notifyListeners();
+    return newPhrase;
   }
 
   reversePhrase(String text) {

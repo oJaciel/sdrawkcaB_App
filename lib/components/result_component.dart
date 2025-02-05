@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
+import 'package:provider/provider.dart';
+import 'package:sdrawkcab/providers/history_provider.dart';
 import 'package:sdrawkcab/providers/tts_provider.dart';
 
 class ResultComponent extends StatelessWidget {
-  final String text;
+  final String id;
 
-  ResultComponent(this.text);
+  ResultComponent(this.id);
 
   @override
   Widget build(BuildContext context) {
+    // Pegar o provider do histórico
+    final provider = Provider.of<HistoryProvider>(context, listen: false);
+
+    // Buscar a frase pelo ID
+    final phrase = provider.getHistory().firstWhere(
+          (p) => p.id == id,
+          orElse: () => throw Exception("Frase não encontrada"),
+        );
+
 //Instanciando e inicializando o Tts
     final ttsProvider = TtsProvider();
     ttsProvider.initTts();
@@ -22,7 +33,7 @@ class ResultComponent extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            '$text ao contrário é:',
+            '${phrase.phrase} ao contrário é:',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -32,7 +43,7 @@ class ResultComponent extends StatelessWidget {
             height: MediaQuery.sizeOf(context).height * 0.025,
           ),
           Text(
-            text,
+            phrase.reversedPhrase,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 32,
@@ -46,15 +57,13 @@ class ResultComponent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Text(
               'Toque para ouvir ao contrário',
-              style: TextStyle(
-                fontSize: 12
-              ),
+              style: TextStyle(fontSize: 12),
               textAlign: TextAlign.center,
             ),
           ),
           PrettyWaveButton(
             backgroundColor: Theme.of(context).colorScheme.primary,
-            onPressed: () => ttsProvider.speak(text),
+            onPressed: () => ttsProvider.speak(phrase.reversedPhrase),
             child: Icon(
               Icons.play_arrow_rounded,
               color: Colors.white,
