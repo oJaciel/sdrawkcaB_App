@@ -28,7 +28,7 @@ class ResultComponent extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(20),
       margin: EdgeInsets.symmetric(
-        vertical: MediaQuery.sizeOf(context).height * 0.1,
+        vertical: MediaQuery.sizeOf(context).height * 0.075,
       ),
       child: Column(
         children: [
