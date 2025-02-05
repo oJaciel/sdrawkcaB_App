@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sdrawkcab/screens/home_screen.dart';
+import 'package:sdrawkcab/screens/tabs_screen.dart';
 import 'package:sdrawkcab/theme/app_theme.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: AppTheme.appTheme,
-      home: HomeScreen(),
+      home: TabsScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
