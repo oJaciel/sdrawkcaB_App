@@ -35,8 +35,8 @@ class HistoryItemComponent extends StatelessWidget {
             ),
           ),
           leading: SizedBox(
-            height: 36,
-            width: 36,
+            height: 40,
+            width: 65,
             child: IconButton(
               style: IconButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.primary),
