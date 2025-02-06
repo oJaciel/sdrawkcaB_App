@@ -16,7 +16,7 @@ class HistoryItemComponent extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(
         horizontal: 15,
-        vertical: 4,
+        vertical: 10,
       ),
       child: Padding(
         padding: const EdgeInsets.all(8),

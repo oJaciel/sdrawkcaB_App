@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sdrawkcab/components/result_component.dart';
 import 'package:sdrawkcab/providers/phrase_provider.dart';
+import 'package:sdrawkcab/theme/app_theme.dart';
 
-class HomeScreen extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final formController = TextEditingController();
 
@@ -11,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<PhraseProvider>(context);
 
-    _openResultModal(BuildContext context, String id) {
+    openResultModal(BuildContext context, String id) {
       showModalBottomSheet(
         context: context,
         builder: (_) {
@@ -36,21 +37,29 @@ class HomeScreen extends StatelessWidget {
                   return null;
                 },
                 textAlign: TextAlign.center,
-                decoration:
-                    const InputDecoration(hintText: "Digite uma palavra"),
+                decoration: AppTheme.formTextStyle,
+                keyboardType: TextInputType.text,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    final newPhrase =
-                        provider.addPhraseToHistory(formController.text);
-                    _openResultModal(context, newPhrase.id);
-                  }
-                },
-                child: const Text(
-                  'Enviar',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 7),
+              ),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: AppTheme.formButtonStyle,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      final newPhrase =
+                          provider.addPhraseToHistory(formController.text);
+                      openResultModal(context, newPhrase.id);
+                    }
+                  },
+                  child: const Text(
+                    'Inverter Texto',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

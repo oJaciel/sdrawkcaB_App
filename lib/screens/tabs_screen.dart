@@ -20,7 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _screens = [
       {
         'title': 'sdrawkcaB',
-        'screen': HomeScreen(),
+        'screen': MainScreen(),
       },
       {
         'title': 'Histórico',
