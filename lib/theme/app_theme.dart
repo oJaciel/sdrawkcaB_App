@@ -8,7 +8,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.deepOrange,
       titleTextStyle: TextStyle(
-        color: Colors.deepOrange,
+        color: Colors.white,
         fontSize: 24,
       ),
     ),
