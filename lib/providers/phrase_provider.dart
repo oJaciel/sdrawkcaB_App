@@ -23,4 +23,9 @@ class PhraseProvider with ChangeNotifier {
     String reversedString = characters.reversed.join('');
     return reversedString;
   }
+
+  removePhrase(Phrase phrase) {
+    history.remove(phrase);
+    notifyListeners();
+  }
 }

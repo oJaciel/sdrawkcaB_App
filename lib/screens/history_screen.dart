@@ -14,9 +14,23 @@ class HistoryScreen extends StatelessWidget {
     List _history = provider.getHistory();
 
     if (_history.isNotEmpty) {
-      return ListView.builder(
-        itemCount: _history.length,
-        itemBuilder: (context, index) => HistoryItemComponent(_history[index]),
+      return Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _history.length,
+              itemBuilder: (context, index) =>
+                  HistoryItemComponent(_history[index]),
+            ),
+          ),
+          Text(
+            'Para excluir um registro, deslize o item para a esquerda',
+            style: TextStyle(
+              color: Colors.grey[800],
+              fontSize: 12,
+            ),
+          ),
+        ],
       );
     } else {
       return EmptyHistoryComponent();
